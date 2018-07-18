@@ -1,0 +1,167 @@
+{
+  "name": "vue-diyz",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "register-service-worker": "^1.0.0",
+    "vue": "^2.5.16",
+    "vue-agile": "^0.3.7",
+    "vue-awesome": "^3.0.5",
+    "vue-material": "^1.0.0-beta-10.2",
+    "vue-progressive-image": "^3.1.0",
+    "vue-router": "^3.0.1",
+    "vue-video-player": "^5.0.2",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-e2e-cypress": "^3.0.0-beta.15",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
+    "@vue/cli-plugin-pwa": "^3.0.0-beta.15",
+    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
+    "@vue/cli-service": "^3.0.0-beta.15",
+    "@vue/eslint-config-prettier": "^3.0.0-rc.3",
+    "@vue/test-utils": "^1.0.0-beta.16",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
+    "lint-staged": "^7.2.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-cli-plugin-vuetify": "^0.1.6",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "vue/order-in-components": [
+        "error",
+        {
+          "order": [
+            "el",
+            "name",
+            "parent",
+            "functional",
+            [
+              "delimiters",
+              "comments"
+            ],
+            [
+              "components",
+              "directives",
+              "filters"
+            ],
+            "extends",
+            "mixins",
+            "inheritAttrs",
+            "model",
+            [
+              "props",
+              "propsData"
+            ],
+            "data",
+            "computed",
+            "watch",
+            "LIFECYCLE_HOOKS",
+            "methods",
+            [
+              "template",
+              "render"
+            ],
+            "renderError"
+          ]
+        }
+      ],
+      "vue/attribute-hyphenation": [
+        2,
+        "always",
+        {
+          "ignore": [
+            "custom-prop"
+          ]
+        }
+      ],
+      "vue/prop-name-casing": [
+        "error",
+        "camelCase"
+      ],
+      "semi": [
+        2,
+        "always"
+      ],
+      "indent": [
+        "error",
+        4
+      ],
+      "no-console": "warn"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "tabWidth": 4
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "<rootDir>/(tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx))"
+    ]
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
