@@ -4,36 +4,34 @@
              v-bind:style="{ backgroundColor: 'lightgray', height: height, backgroundSize: 'cover' }" />
         <div class="team-wrapper">
             <h1 class="header">So who exactly is DIYZ<sup>®</sup>? Glad you asked! We’re a couple dozen wild-eyed makers that can hammer left, hammer right, and we never rest until the job is done.</h1>
-            <!--<div>-->
-                <div class="item-wrapper">
-                    <template v-for="item in teamList">
-                        <div class="container" >
-                            <div class="team-entry">
-                                <div class="left-content">
-                                    <img class="team-photo" v-bind:src="item.main_picture" />
-                                </div>
-                                <div class="right-content">
-                                    <div class="right-column">
-                                        <div class="team-name">
-                                            {{item.first_name}}
-                                        </div>
-                                        <div class="team-title">
-                                            {{item.job_title}}
-                                        </div>
+            <div class="item-wrapper">
+                <div v-for="item in teamList" :key="item.index">
+                    <div class="container" >
+                        <div class="team-entry">
+                            <div class="left-content">
+                                <img class="team-photo" v-bind:src="item.main_picture" />
+                            </div>
+                            <div class="right-content">
+                                <div class="right-column">
+                                    <div class="team-name">
+                                        {{item.first_name}}
+                                    </div>
+                                    <div class="team-title">
+                                        {{item.job_title}}
+                                    </div>
 
-                                        <div class="team-about-wrapper">
-                                            <div class="team-about">
-                                                About
-                                            </div>
-                                            <icon name="chevron-down" class="more-button" />
+                                    <div class="team-about-wrapper">
+                                        <div class="team-about">
+                                            About
                                         </div>
+                                        <icon name="chevron-down" class="more-button" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </template>
+                    </div>
                 </div>
-            <!--</div>-->
+            </div>
         </div>
 
     </div>
@@ -55,7 +53,7 @@ export default {
             page: 1
         };
     },
-    mounted() {
+    created() {
         this.getTeam(1);
     },
     methods: {
@@ -81,7 +79,7 @@ export default {
             }
 
             axios
-                .get(`https://api.diyz.com/content/static/team/${page}`)
+                .get(`https://api.sbd-diyz-dev.com/content/static/team/${page}`)
                 .then(response => {
                     response = response.data;
 
@@ -104,10 +102,6 @@ export default {
 </script>
 
 <style scoped>
-body {
-    margin: 0;
-    padding: 0;
-}
 .header-picture {
     width: 100%;
     margin: 0 auto;
@@ -132,6 +126,7 @@ body {
     height: 35px;
     width: 35px;
     color: #939199;
+    padding-right: 8px;
 }
 .item-wrapper {
     font-family: 'Roboto', sans-serif;
@@ -194,6 +189,7 @@ body {
 .team-about-wrapper {
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
     justify-content: space-between;
     margin-top: auto;

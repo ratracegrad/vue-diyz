@@ -13,11 +13,10 @@
                 <option value="Project Ideas">Project Ideas</option>
                 <option value="Pro Advice">Pro Advice</option>
                 <option value="Media Relations">Media Relations</option>
-                <options value="General Support">General Support</options>
+                <option value="General Support">General Support</option>
             </select>
             <textarea placeholder="Message"></textarea>
             <button>SUBMIT</button>
-            <!--<paper-button on-tap="_validateForm" class="form-button">Submit</paper-button>-->
         </div>
     </div>
 </template>

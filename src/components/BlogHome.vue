@@ -7,7 +7,7 @@
             No Blog Posts Found!
         </div>
         <div class="wrapper">
-            <template v-for="item in blogList">
+            <div v-for="item in blogList" :key="item.blog_id">
                 <div class="large-item-wrapper">
                     <div class="item"  v-on:click="showBlog(item.titleId)">
                         <img v-bind:src="item.thumbnail" class="blog-thumbnail"/>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-            </template>
+            </div>
 
         </div>
     </div>
@@ -40,7 +40,9 @@ export default {
     },
     mounted() {
         axios
-            .get('https://api.diyz.com/content/dynamic/searchBlogs?page=1')
+            .get(
+                'https://api.sbd-diyz-dev.com/content/dynamic/searchBlogs?page=1'
+            )
             .then(response => {
                 response = response.data;
 
@@ -80,8 +82,8 @@ export default {
                     this.hasBlog = false;
                 }
             })
-            .catch(error => {
-                console.log({ error });
+            .catch(() => {
+                this.hasBlog = false;
             });
     },
     methods: {

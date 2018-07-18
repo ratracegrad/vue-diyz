@@ -12,7 +12,7 @@
                         {{getAuthor(blogSelected.author)}}
                     </div>
 
-                    <div v-for="item in blogSelected.body_parts">
+                    <div v-for="item in blogSelected.body_parts" :key="item.index">
                         <div class="blog-parts-title">{{item.title}}</div>
                         <div class="blog-text" v-html="item.text"></div>
 
@@ -86,7 +86,11 @@ export default {
     },
     mounted() {
         axios
-            .get(`https://api.diyz.com/content/dynamic/searchBlogs/${this.id}`)
+            .get(
+                `https://api.sbd-diyz-dev.com/content/dynamic/searchBlogs/${
+                    this.id
+                }`
+            )
             .then(response => {
                 response = response.data;
                 if (response && response.body_parts) {
@@ -117,10 +121,8 @@ export default {
         },
         hasVideo: function(item) {
             return !(item === null || item === undefined);
-            // return item && item !== null && item !== undefined;
         },
         setImageHeight() {
-            console.log('setImageHeight', window.innerWidth);
             if (window.innerWidth <= 620) {
                 return (Math.round(window.innerWidth) * 9) / 16 + 'px';
             } else if (window.innerWidth >= 1060) {

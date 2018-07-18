@@ -8,7 +8,8 @@
                             <video-player class="content" :options='options'></video-player>
                         </template>
                         <template v-if="!project.hasVideo">
-                            <img class="content" v-bind:src="project.image.path" />
+                            <!--<img class="content" :src="https://i1.wp.com/www.jenniferbland.com/wp-content/uploads/Jennifer-Bland-headshot.jpg" />-->
+                            <img class="content" src="../images/no_image.png"  />
                         </template>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
             </div>
             <div v-show="communityExpanded">
                 <div v-show="hasCommunity">
-                    <template v-for="item in communityList">
+                    <div v-for="item in communityList" :key="item.index">
                         <div class="full-width">
                             <div class="ugc-wrapper">
                                 <div class="community-entry">
@@ -55,7 +56,7 @@
                             </div>
                             <div class="spacer" style="background: white;"></div>
                         </div>
-                    </template>
+                    </div>
                 </div>
             </div>
             <div v-show="!hasCommunity" class="noCommunityTitle">
@@ -65,24 +66,22 @@
         <div class="right-side">
             <div class="right-wrapper">
                 <h1 class="related-header">related projects</h1>
-
-                    <template v-for="item in project.related_project">
-                        <div class="right-list-wrap">
-                            <div class="related-wrapper">
-                                <div class="related-image-wrapper">
-                                    <div class="sixteen-nine">
-                                        <img v-bind:src="item.image" class="content"/>
-                                    </div>
-                                </div>
-                                <div class="related-detail-wrapper">
-                                    <div class="related-title">{{item.title}}</div>
-                                    <div class="related-descr">{{item.description}}</div>
+                <div v-for="item in project.related_project" :key="item.project_id" v-on:click="showRelated(item.titleId)">
+                    <div class="right-list-wrap">
+                        <div class="related-wrapper">
+                            <div class="related-image-wrapper">
+                                <div class="sixteen-nine">
+                                    <img v-bind:src="item.image" class="content"/>
                                 </div>
                             </div>
-                            <div class="spacer"></div>
+                            <div class="related-detail-wrapper">
+                                <div class="related-title">{{item.title}}</div>
+                                <div class="related-descr">{{item.description}}</div>
+                            </div>
                         </div>
-                    </template>
-
+                        <div class="spacer"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -112,15 +111,18 @@ export default {
     },
     computed: {
         options: function() {
-            return {
-                sources: [
-                    {
-                        type: this.project.video.filemime,
-                        src: this.project.video.path
-                    }
-                ],
-                poster: this.project.image.path
-            };
+            if (this.project && this.project.video) {
+                return {
+                    sources: [
+                        {
+                            type: this.project.video.filemime,
+                            src: this.project.video.path
+                        }
+                    ],
+                    poster: this.project.image.path
+                };
+            }
+            return '';
         },
         descrHTML: function() {
             if (this.project && this.project.main_description) {
@@ -135,35 +137,65 @@ export default {
             );
         }
     },
+    watch: {
+        '$route.params'() {
+            this.id = this.$route.params.id;
+            this.reset();
+            this.getProject();
+            this.getCommunity();
+        }
+    },
     mounted() {
-        axios
-            .get(
-                `https://api.diyz.com/content/dynamic/getProjectInfo/${this.id}`
-            )
-            .then(response => {
-                this.project = response.data;
-            });
+        this.reset();
+        this.getProject();
+        this.getCommunity();
+    },
+    methods: {
+        showRelated(title) {
+            this.$router.push(`/project/${title}`);
+        },
+        getProject() {
+            axios
+                .get(
+                    `https://api.sbd-diyz-dev.com/content/dynamic/getProjectInfo/${
+                        this.id
+                    }`
+                )
+                .then(response => {
+                    this.project = response.data;
+                });
+        },
+        getCommunity() {
+            axios
+                .get(
+                    `https://api.diyz.com/community/retrieve/${this.id}?page=1`
+                )
+                .then(response => {
+                    response = response.data;
+                    if (response && response.posts) {
+                        this.isLoading = false;
+                        this.hasCommunity = response.posts.length > 0;
+                        this.currentBatch = response.current_batch;
+                        this.maxBatch = response.num_of_batches;
 
-        axios
-            .get(`https://api.diyz.com/community/retrieve/${this.id}?page=1`)
-            .then(response => {
-                response = response.data;
-                if (response && response.posts) {
-                    this.isLoading = false;
-                    this.hasCommunity = response.posts.length > 0;
-                    this.currentBatch = response.current_batch;
-                    this.maxBatch = response.num_of_batches;
-
-                    response.posts.forEach(item => {
-                        if (!this.communityList.includes(item)) {
-                            this.communityList.push(item);
-                        }
-                    });
-                } else {
-                    this.communityList = [];
-                    this.hasCommunity = false;
-                }
-            });
+                        response.posts.forEach(item => {
+                            if (!this.communityList.includes(item)) {
+                                this.communityList.push(item);
+                            }
+                        });
+                    } else {
+                        this.communityList = [];
+                        this.hasCommunity = false;
+                    }
+                });
+        },
+        reset() {
+            this.project = {};
+            this.communityList = [];
+            this.hasCommunity = false;
+            this.currentBatch = null;
+            this.maxBatch = null;
+        }
     }
 };
 </script>

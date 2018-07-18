@@ -53,7 +53,7 @@ export default {
     },
     mounted() {
         axios
-            .get('https://api.diyz.com/content/static/privacy-terms')
+            .get('https://api.sbd-diyz-dev.com/content/static/privacy-terms')
             .then(response => {
                 response = response.data;
                 this.privacy = response.privacy;

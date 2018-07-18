@@ -1,11 +1,11 @@
 <template>
     <div style="padding: 20px 30px; width: 100%; margin: 0 auto; box-sizing: border-box;">
         <div class="project-wrapper">
-            <template v-for="project in projects">
+            <div v-for="project in projects" :key="project.id">
                 <div v-if="project.type === 'projects'" class="project-entry" v-on:click="showProject(project.title)">
                     <img :src="project.image" />
                 </div>
-            </template>
+            </div>
         </div>
     </div>
 </template>

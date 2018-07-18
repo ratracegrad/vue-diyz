@@ -15,7 +15,7 @@
             </h2>
             <div class="item-wrapper" v-show="hasPress">
                 <div style="display: flex; flex-wrap: wrap;">
-                    <template v-for="item in pressList">
+                    <div v-for="item in pressList" :key="item.index">
                         <div class="large-wrapper">
                             <div class="item-entry">
                                 <div class="press-date">
@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                         </div>
-                    </template>
+                    </div>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@ export default {
 
             axios
                 .get(
-                    `https://api.sbd-diyz-dev.com/content/static/press/${page}`
+                    `https://api.sbd-diyz-dev.com/content/static/press/${page}`
                 )
                 .then(response => {
                     response = response.data;

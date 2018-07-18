@@ -6,18 +6,13 @@
             <h1 class="header">Here are answers to some of our most
                 frequently asked questions.
             </h1>
-
-
-
             <div class="item-wrapper" v-show="hasFaq">
-                <!--<div style="display: flex; flex-wrap: wrap; flex-direction: column;">-->
-                    <template v-for="item in faqList">
-                        <div class="row-wrapper">
-                            <div class="title">{{item.title}}</div>
-                            <icon name="chevron-down" class="more-button" />
-                        </div>
-                    </template>
-                <!--</div>-->
+                <div v-for="item in faqList" :key="item.id">
+                    <div class="row-wrapper">
+                        <div class="title">{{item.title}}</div>
+                        <icon name="chevron-down" class="more-button" />
+                    </div>
+                </div>
             </div>
 
             <div v-show="!hasFaq" class="no-items">
@@ -70,7 +65,7 @@ export default {
             }
 
             axios
-                .get(`https://api.diyz.com/content/static/faqs/${page}`)
+                .get(`https://api.sbd-diyz-dev.com/content/static/faqs/${page}`)
                 .then(response => {
                     response = response.data;
 
