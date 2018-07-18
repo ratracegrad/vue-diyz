@@ -37,22 +37,24 @@ export default new Router({
         {
             path: '/about',
             name: 'about',
-            component: AboutView
-        },
-        {
-            path: '/about/home',
-            name: 'aboutHome',
-            component: AboutHome
-        },
-        {
-            path: '/about/press',
-            name: 'aboutPress',
-            component: AboutPress
-        },
-        {
-            path: '/about/faq',
-            name: 'aboutFaq',
-            component: AboutFaq
+            component: AboutView,
+            children: [
+                {
+                    path: 'home',
+                    name: 'aboutHome',
+                    component: AboutHome
+                },
+                {
+                    path: 'press',
+                    name: 'aboutPress',
+                    component: AboutPress
+                },
+                {
+                    path: 'faq',
+                    name: 'aboutFaq',
+                    component: AboutFaq
+                }
+            ]
         },
         {
             path: '/contact',

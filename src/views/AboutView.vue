@@ -1,30 +1,31 @@
 <template>
     <div>
-        <md-tabs md-sync-route md-alignment="fixed" class="md-transparent">
-            <md-tab id="tab-team" md-label="Team" >
-                <AboutHome></AboutHome>
+        <md-tabs md-sync-route md-alignment="fixed" class="md-transparent" >
+            <md-tab id="tab-team" md-label="Team" @click="showAbout('home')" >
+                <router-view></router-view>
             </md-tab>
-            <md-tab id="tab-press" md-label="Press" >
-                <AboutPress></AboutPress>
+            <md-tab id="tab-press" md-label="Press" @click="showAbout('press')" >
+                <router-view></router-view>
             </md-tab>
-            <md-tab id="tab-faq" md-label="FAQ">
-                <AboutFaq></AboutFaq>
+            <md-tab id="tab-faq" md-label="FAQ" @click="showAbout('faq')" >
+                <router-view></router-view>
             </md-tab>
         </md-tabs>
     </div>
 </template>
 
 <script>
-import AboutHome from '../components/AboutHome.vue';
-import AboutPress from '../components/AboutPress.vue';
-import AboutFaq from '../components/AboutFaq.vue';
-
 export default {
     name: 'AboutView',
-    components: {
-        AboutHome,
-        AboutPress,
-        AboutFaq
+    beforeMount() {
+        this.showAbout('home');
+    },
+    methods: {
+        showAbout(title) {
+            console.log('showAbout', title);
+
+            this.$router.push(`/about/${title}`);
+        }
     }
 };
 </script>
