@@ -7,32 +7,36 @@
                 </div>
             </div>
         </div>
+
+        <loading :active.sync="isLoading"
+                 :can-cancel="true"
+                 :on-cancel="whenCancelled"
+                 :is-full-page="true"></loading>
     </div>
 </template>
 
 <script>
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.min.css';
 import axios from 'axios';
 
 export default {
     name: 'ProjectHome',
+    components: {
+        Loading
+    },
     data() {
         return {
             projects: [],
             currentPage: null,
-            numPages: null
+            numPages: null,
+            hasProjects: false,
+            isLoading: false
         };
     },
+
     mounted() {
-        axios
-            .get('https://api.sbd-diyz-dev.com/content/static/landingpage/1')
-            .then(response => {
-                this.projects = response.data.page;
-                this.currentPage = response.data.current_page;
-                this.numPages = response.data.num_of_pages;
-            })
-            .catch(error => {
-                console.log({ error });
-            });
+        this.getProjects();
     },
     methods: {
         showProject(title) {
@@ -43,6 +47,24 @@ export default {
             title = title.trim();
             title = title.replace(/[:?!&']/g, '');
             return title.toLowerCase().replace(/\s/g, '-');
+        },
+        getProjects() {
+            this.isLoading = true;
+            axios
+                .get(
+                    'https://api.sbd-diyz-dev.com/content/static/landingpage/1'
+                )
+                .then(response => {
+                    this.projects = response.data.page;
+                    this.currentPage = response.data.current_page;
+                    this.numPages = response.data.num_of_pages;
+                    this.hasProjects = true;
+                    this.isLoading = false;
+                })
+                .catch(() => {
+                    this.hasProjects = false;
+                    this.isLoading = false;
+                });
         }
     }
 };

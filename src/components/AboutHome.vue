@@ -5,7 +5,7 @@
         <div class="team-wrapper">
             <h1 class="header">So who exactly is DIYZ<sup>®</sup>? Glad you asked! We’re a couple dozen wild-eyed makers that can hammer left, hammer right, and we never rest until the job is done.</h1>
             <div class="item-wrapper">
-                <div v-for="item in teamList" :key="item.index">
+                <template v-for="item in teamList">
                     <div class="container" >
                         <div class="team-entry">
                             <div class="left-content">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </template>
             </div>
         </div>
 
