@@ -10,7 +10,6 @@
 
         <loading :active.sync="isLoading"
                  :can-cancel="true"
-                 :on-cancel="whenCancelled"
                  :is-full-page="true"></loading>
     </div>
 </template>
@@ -34,7 +33,6 @@ export default {
             isLoading: false
         };
     },
-
     mounted() {
         this.getProjects();
     },
