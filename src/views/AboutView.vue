@@ -16,15 +16,7 @@
 
 <script>
 export default {
-    name: 'AboutView',
-    beforeMount() {
-        this.showAbout('home');
-    },
-    methods: {
-        showAbout(title) {
-            this.$router.push(`/about/${title}`);
-        }
-    }
+    name: 'AboutView'
 };
 </script>
 

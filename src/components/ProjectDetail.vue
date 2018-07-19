@@ -8,7 +8,6 @@
                             <video-player class="content" :options='options'></video-player>
                         </template>
                         <template v-if="!project.hasVideo">
-                            <!--<img class="content" :src="https://i1.wp.com/www.jenniferbland.com/wp-content/uploads/Jennifer-Bland-headshot.jpg" />-->
                             <img class="content" src="../images/no_image.png"  />
                         </template>
                     </div>
