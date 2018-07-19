@@ -1,6 +1,6 @@
 <template>
     <div>
-        <GridComp :content="projects"/>
+        <GridComp :content="tags"/>
     </div>
 </template>
 
@@ -11,23 +11,23 @@ import 'vue-loading-overlay/dist/vue-loading.min.css';
 import axios from 'axios';
 
 export default {
-    name: 'ProjectHome',
+    name: 'CategoryHome',
     components: {
         Loading,
         GridComp
     },
     data() {
         return {
-            projects: [],
+            tags: [],
             currentPage: null,
             numPages: null,
-            hasProjects: false,
+            hasTags: false,
             isLoading: false
         };
     },
 
     beforeMount() {
-        this.getProjects();
+        this.getTags();
     },
     methods: {
         formatUrlTitle(title) {
@@ -35,25 +35,23 @@ export default {
             title = title.replace(/[:?!&']/g, '');
             return title.toLowerCase().replace(/\s/g, '-');
         },
-        getProjects() {
+        getTags() {
             this.isLoading = true;
             axios
-                .get(
-                    'https://api.sbd-diyz-dev.com/content/static/landingpage/1'
-                )
+                .get('https://api.sbd-diyz-dev.com/content/static/tag_pages/1')
                 .then(response => {
-                    response.data.page.forEach(project => {
-                        project.route =
-                            '/project/' + this.formatUrlTitle(project.title);
+                    response.data.page.forEach(tag => {
+                        tag.route =
+                            '/category/' + this.formatUrlTitle(tag.title);
                     });
-                    this.projects = response.data.page;
+                    this.tags = response.data.page;
                     this.currentPage = response.data.current_page;
                     this.numPages = response.data.num_of_pages;
-                    this.hasProjects = true;
+                    this.hasTags = true;
                     this.isLoading = false;
                 })
                 .catch(() => {
-                    this.hasProjects = false;
+                    this.hasTags = false;
                     this.isLoading = false;
                 });
         }

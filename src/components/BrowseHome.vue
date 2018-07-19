@@ -11,7 +11,7 @@ import 'vue-loading-overlay/dist/vue-loading.min.css';
 import axios from 'axios';
 
 export default {
-    name: 'ProjectHome',
+    name: 'BrowseHome',
     components: {
         Loading,
         GridComp
@@ -21,7 +21,7 @@ export default {
             projects: [],
             currentPage: null,
             numPages: null,
-            hasProjects: false,
+            hasTags: false,
             isLoading: false
         };
     },
@@ -39,21 +39,21 @@ export default {
             this.isLoading = true;
             axios
                 .get(
-                    'https://api.sbd-diyz-dev.com/content/static/landingpage/1'
+                    'https://api.sbd-diyz-dev.com/content/dynamic/project_pages?page=1'
                 )
                 .then(response => {
-                    response.data.page.forEach(project => {
+                    response.data.projects.forEach(project => {
                         project.route =
-                            '/project/' + this.formatUrlTitle(project.title);
+                            '/browse/' + this.formatUrlTitle(project.title);
                     });
-                    this.projects = response.data.page;
+                    this.projects = response.data.projects;
                     this.currentPage = response.data.current_page;
                     this.numPages = response.data.num_of_pages;
-                    this.hasProjects = true;
+                    this.hasTags = true;
                     this.isLoading = false;
                 })
                 .catch(() => {
-                    this.hasProjects = false;
+                    this.hasTags = false;
                     this.isLoading = false;
                 });
         }
