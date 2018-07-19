@@ -1,23 +1,22 @@
 <template>
     <div>
         <div class="shop-wrapper">
-            <div v-for="tool in toolsList" :key="tool.index" style="width: 254px;
-    max-width: 254px;
-    max-height: 382px;
-    height: 382px;
-    margin: 10px 5px;
-    box-sizing: border-box;">
+            <div v-for="tool in toolsList" :key="tool.index" class="outer-wrapper">
                 <div class="tool-wrapper">
                     <img class="tool-image" :src="tool.largeImage" />
                     <div class="right-wrapper">
                         <div class="tool-title">{{tool.title}}</div>
                         <div class="right-detail-wrapper">
-                            <div class="tool-brand">By {{tool.brand}}</div>
-                            <div class="tool-price">{{tool.price}}</div>
-                            <img class="tool-prime" v-show="tool.isEligibleForPrime === '1'" src="../images/primeLogo.png" />
+                            <div>
+                                <div class="tool-brand">By {{tool.brand}}</div>
+                                <div class="tool-price">{{tool.price}}</div>
+                                <img class="tool-prime" v-show="tool.isEligibleForPrime === '1'" src="../images/primeLogo.png" />
+                            </div>
+                            <button id="smallBtn" class="tool-button">Add To Cart</button>
                         </div>
+                        <button id="largeBtn" class="tool-button">Add To Cart</button>
                     </div>
-                    <button class="tool-button">Add To Cart</button>
+
                 </div>
             </div>
         </div>
@@ -95,6 +94,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.outer-wrapper {
+    width: 254px;
+    max-width: 254px;
+    max-height: 382px;
+    height: 382px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+}
 .shop-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -149,6 +156,7 @@ export default {
     padding: 0 5px;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 .tool-brand {
     font-size: 14px;
@@ -190,5 +198,47 @@ export default {
     margin-right: auto;
     min-width: 80px;
     text-transform: uppercase;
+}
+#smallBtn {
+    display: none;
+}
+
+@media screen and (max-width: 620px) {
+    .shop-wrapper {
+        padding: 0;
+    }
+    .outer-wrapper {
+        width: 100%;
+        max-width: 100%;
+        height: unset;
+        margin: 5px 10px;
+    }
+    .tool-wrapper {
+        flex-direction: row;
+        align-items: center;
+        background: white;
+    }
+    .right-detail-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    .tool-button {
+        max-width: 120px;
+        margin: auto 0 0 0;
+        font-size: 13px;
+    }
+    .tool-image {
+        width: 107px;
+        height: 107px;
+        object-fit: contain;
+    }
+    #largeBtn {
+        display: none;
+    }
+    #smallBtn {
+        display: block;
+        font-size: 13px;
+        max-width: 110px;
+    }
 }
 </style>
