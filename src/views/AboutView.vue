@@ -1,8 +1,8 @@
 <template>
     <div>
         <md-tabs md-sync-route md-alignment="fixed" class="md-transparent" >
-            <md-tab id="tab-team" md-label="Team" to="/about/home" >
-                <router-view></router-view>
+            <md-tab id="tab-team" md-label="Team" to="/about" >
+                <about-home></about-home>
             </md-tab>
             <md-tab id="tab-press" md-label="Press" to="/about/press" >
                 <router-view></router-view>
@@ -15,8 +15,13 @@
 </template>
 
 <script>
+import AboutHome from '@/components/AboutHome.vue';
+
 export default {
-    name: 'AboutView'
+    name: 'AboutView',
+    components: {
+        'about-home': AboutHome
+    }
 };
 </script>
 
