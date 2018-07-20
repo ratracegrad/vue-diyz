@@ -7,11 +7,13 @@
                 frequently asked questions.
             </h1>
             <div class="item-wrapper" v-show="hasFaq">
-                <div v-for="item in faqList" :key="item.id">
-                    <div class="row-wrapper">
+                <div v-for="item in faqList" :key="item.id" class="collapse-wrapper">
+                    <div class="row-wrapper" @click="openItem(item)">
                         <div class="title">{{item.title}}</div>
-                        <icon name="chevron-down" class="more-button" />
+                        <icon name="chevron-down" class="more-button" v-show="!item.isopen"/>
+                        <icon name="chevron-up" class="more-button" v-show="item.isopen"/>
                     </div>
+                    <div v-show="item.isopen" class="description-wrapper">{{item.description}}</div>
                 </div>
             </div>
 
@@ -36,7 +38,11 @@ export default {
             currentBatch: null,
             maxBatch: null,
             isLoading: false,
-            page: 1
+            page: 1,
+            testData: [
+                { title: 'test 1', description: 'description 1' },
+                { title: 'test 2', description: 'description 2' }
+            ]
         };
     },
     mounted() {
@@ -75,6 +81,7 @@ export default {
                         this.currentBatch = response.current_page;
                         this.maxBatch = response.num_of_page;
                         response.page.forEach(team => {
+                            team.isopen = false;
                             this.faqList.push(team);
                         });
                     } else {
@@ -86,6 +93,10 @@ export default {
         formatDate(dt) {
             let arr = dt.split('-');
             return `${arr[1]}/${arr[2]}/${arr[0]}`;
+        },
+        openItem(item) {
+            console.log('openItem', item);
+            item.isopen = !item.isopen;
         }
     }
 };
@@ -144,21 +155,26 @@ a {
     font-size: 17px;
     text-align: center;
 }
-.column-wrapper {
-    display: flex;
-    flex-direction: column;
-}
+
 .row-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.collapse-wrapper {
+    display: flex;
     border-bottom: 1px solid rgb(231, 231, 231);
     padding: 10px 0;
+    flex-direction: column;
 }
 .title {
     line-height: 48px;
     font-size: 15px;
     font-family: 'Poppins-Light', sans-serif;
+}
+.description-wrapper {
+    text-align: left;
+    padding: 0 10px;
 }
 .more-button {
     height: 35px;

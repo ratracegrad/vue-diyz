@@ -13,7 +13,6 @@
 
         <loading :active.sync="isLoading"
                  :can-cancel="true"
-                 :on-cancel="whenCancelled"
                  :is-full-page="true"></loading>
     </div>
 </template>

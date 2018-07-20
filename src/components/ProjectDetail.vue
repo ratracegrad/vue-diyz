@@ -83,6 +83,10 @@
                 </div>
             </div>
         </div>
+
+        <loading :active.sync="isLoading"
+                 :can-cancel="true"
+                 :is-full-page="true"></loading>
     </div>
 </template>
 
@@ -90,11 +94,14 @@
 import axios from 'axios';
 import 'video.js/dist/video-js.css';
 import { videoPlayer } from 'vue-video-player';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.min.css';
 
 export default {
     name: 'ProjectDetail',
     components: {
-        videoPlayer
+        videoPlayer,
+        Loading
     },
     data() {
         return {
@@ -154,6 +161,7 @@ export default {
             this.$router.push(`/project/${title}`);
         },
         getProject() {
+            this.isLoading = true;
             axios
                 .get(
                     `https://api.sbd-diyz-dev.com/content/dynamic/getProjectInfo/${
@@ -162,6 +170,7 @@ export default {
                 )
                 .then(response => {
                     this.project = response.data;
+                    this.isLoading = false;
                 });
         },
         getCommunity() {

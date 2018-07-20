@@ -24,6 +24,9 @@ export default {
 .md-tabs {
     margin-bottom: 24px;
 }
+.md-tab {
+    padding: 0;
+}
 .md-tabs.md-alignment-fixed .md-tabs-navigation {
     justify-content: space-between;
 }
