@@ -5,32 +5,30 @@
         <div class="team-wrapper">
             <h1 class="header">So who exactly is DIYZ<sup>®</sup>? Glad you asked! We’re a couple dozen wild-eyed makers that can hammer left, hammer right, and we never rest until the job is done.</h1>
             <div class="item-wrapper">
-                <template v-for="item in teamList">
-                    <div class="container" >
-                        <div class="team-entry">
-                            <div class="left-content">
-                                <img class="team-photo" v-bind:src="item.main_picture" />
-                            </div>
-                            <div class="right-content">
-                                <div class="right-column">
-                                    <div class="team-name">
-                                        {{item.first_name}}
-                                    </div>
-                                    <div class="team-title">
-                                        {{item.job_title}}
-                                    </div>
+                <div class="container" v-for="item in teamList" :key="item.member_id">
+                    <div class="team-entry">
+                        <div class="left-content">
+                            <img class="team-photo" v-bind:src="item.main_picture" />
+                        </div>
+                        <div class="right-content">
+                            <div class="right-column">
+                                <div class="team-name">
+                                    {{item.first_name}}
+                                </div>
+                                <div class="team-title">
+                                    {{item.job_title}}
+                                </div>
 
-                                    <div class="team-about-wrapper">
-                                        <div class="team-about">
-                                            About
-                                        </div>
-                                        <icon name="chevron-down" class="more-button" />
+                                <div class="team-about-wrapper">
+                                    <div class="team-about">
+                                        About
                                     </div>
+                                    <icon name="chevron-down" class="more-button" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </template>
+                </div>
             </div>
         </div>
 
@@ -102,6 +100,9 @@ export default {
 </script>
 
 <style scoped>
+body {
+    height: 100%;
+}
 .header-picture {
     width: 100%;
     margin: 0 auto;
