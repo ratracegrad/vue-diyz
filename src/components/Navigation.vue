@@ -5,7 +5,7 @@
         <router-link to="/browse" exact>Browse</router-link>
         <router-link to="/shop" exact>Shop</router-link>
         <router-link to="/blog" exact>Blog</router-link>
-        <router-link to="/prochat" exact>Pro Chat</router-link>
+        <router-link to="/pro-chat/pros" exact>Pro Chat</router-link>
         <router-link to="/about/home" exact>About Us</router-link>
         <router-link to="/contact" exact>Contact Us</router-link>
         <router-link to="/legal" exact>Legal</router-link>

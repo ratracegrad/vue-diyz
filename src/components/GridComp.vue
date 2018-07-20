@@ -66,6 +66,7 @@ export default {
 .photo-content > .detail {
     opacity: 1;
     position: absolute;
+    color: black;
     bottom: 0;
     left: 0;
     right: 0;

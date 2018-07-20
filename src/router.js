@@ -8,6 +8,9 @@ import BlogView from './views/BlogView.vue';
 import ContactView from './views/ContactView.vue';
 import LegalView from './views/LegalView.vue';
 import ProchatView from './views/ProchatView.vue';
+import ProchatPros from './components/ProchatPros.vue';
+import ProchatHours from './components/ProchatHours.vue';
+import ProchatApply from './components/ProchatApply.vue';
 import ShopView from './views/ShopView.vue';
 import AboutHome from './components/AboutHome.vue';
 import AboutPress from './components/AboutPress.vue';
@@ -84,9 +87,26 @@ export default new Router({
             component: LegalView
         },
         {
-            path: '/prochat',
+            path: '/pro-chat',
             name: 'prochat',
-            component: ProchatView
+            component: ProchatView,
+            children: [
+                {
+                    path: 'pros',
+                    name: 'prochatHome',
+                    component: ProchatPros
+                },
+                {
+                    path: 'hours',
+                    name: 'prochatHours',
+                    component: ProchatHours
+                },
+                {
+                    path: 'apply',
+                    name: 'prochatApply',
+                    component: ProchatApply
+                }
+            ]
         },
         {
             path: '/shop',

@@ -44,7 +44,7 @@ export default {
                 .then(response => {
                     response.data.projects.forEach(project => {
                         project.route =
-                            '/browse/' + this.formatUrlTitle(project.title);
+                            '/project/' + this.formatUrlTitle(project.title);
                     });
                     this.projects = response.data.projects;
                     this.currentPage = response.data.current_page;
