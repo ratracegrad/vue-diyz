@@ -1,7 +1,6 @@
 <template>
     <div>
-        <md-theme md-name="yellow">
-            <md-tabs md-sync-route md-alignment="fixed" class="md-transparent" style="margin-bottom: 24px;">
+        <md-tabs class="md-transparent"  md-alignment="fixed" md-sync-route  >
                 <md-tab id="tab-team" md-label="Team" to="/about" style="padding: 0;">
                     <about-home></about-home>
                 </md-tab>
@@ -12,7 +11,6 @@
                     <router-view></router-view>
                 </md-tab>
             </md-tabs>
-        </md-theme>
     </div>
 </template>
 
@@ -28,10 +26,10 @@ export default {
 </script>
 
 <style lang="scss">
-.md-tabs-navigation {
-    margin-bottom: 24px;
-}
 :root {
     --md-theme-default-primary-on-background: #ffd100;
+}
+.md-tabs-navigation {
+    margin-bottom: 24px;
 }
 </style>

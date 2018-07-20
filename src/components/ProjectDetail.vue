@@ -347,7 +347,8 @@ export default {
 }
 .community-header {
     color: #262624;
-    font-family: 'Poppins-Light', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
     font-size: 26px;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
@@ -423,7 +424,7 @@ export default {
 
 /* styling for Related Projects */
 .related-header {
-    font-family: 'Poppins-Light', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 20px;
     line-height: 29px;
     text-transform: uppercase;

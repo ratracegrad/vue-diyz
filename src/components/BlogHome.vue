@@ -21,14 +21,23 @@
             </div>
 
         </div>
+
+        <loading :active.sync="isLoading"
+                 :can-cancel="true"
+                 :is-full-page="true"></loading>
     </div>
 </template>
 
 <script>
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.min.css';
 import axios from 'axios';
 
 export default {
     name: 'BlogHome',
+    components: {
+        Loading
+    },
     data() {
         return {
             blogList: [],
@@ -39,54 +48,59 @@ export default {
         };
     },
     mounted() {
-        axios
-            .get(
-                'https://api.sbd-diyz-dev.com/content/dynamic/searchBlogs?page=1'
-            )
-            .then(response => {
-                response = response.data;
-
-                if (response && response.products) {
-                    this.isLoading = false;
-                    this.hasBlog = response.products.length > 0;
-                    this.currentBatch = response.current_batch;
-                    this.maxBatch = response.num_of_batches;
-
-                    let _cleanBody = parts => {
-                        for (let i = 0; i < parts.length; i++) {
-                            if (parts[i]['text'] !== null) {
-                                return parts[i].text
-                                    .replace(/<\/?[^>]+(>|$)/g, '')
-                                    .replace(/&nbsp;/gi, ' ');
-                            }
-                        }
-                    };
-
-                    let _formatDate = dt => {
-                        let arr = dt.split('-');
-                        return arr[1] + '/' + arr[2] + '/' + arr[0];
-                    };
-
-                    response.products.forEach(x => {
-                        x.thumbnail = x.thumbnail.replace(/\s/g, '%20');
-                        x['bodyText'] = _cleanBody(x.body_parts);
-                        x.author = x.author || 'DIYZ';
-                        x.date = _formatDate(x.date);
-
-                        if (!this.blogList.includes(x)) {
-                            this.blogList.push(x);
-                        }
-                    });
-                } else {
-                    this.set('blogList', []);
-                    this.hasBlog = false;
-                }
-            })
-            .catch(() => {
-                this.hasBlog = false;
-            });
+        this.getBlogs();
     },
     methods: {
+        getBlogs() {
+            this.isLoading = true;
+            axios
+                .get(
+                    'https://api.sbd-diyz-dev.com/content/dynamic/searchBlogs?page=1'
+                )
+                .then(response => {
+                    response = response.data;
+
+                    if (response && response.products) {
+                        this.hasBlog = response.products.length > 0;
+                        this.currentBatch = response.current_batch;
+                        this.maxBatch = response.num_of_batches;
+
+                        let _cleanBody = parts => {
+                            for (let i = 0; i < parts.length; i++) {
+                                if (parts[i]['text'] !== null) {
+                                    return parts[i].text
+                                        .replace(/<\/?[^>]+(>|$)/g, '')
+                                        .replace(/&nbsp;/gi, ' ');
+                                }
+                            }
+                        };
+
+                        let _formatDate = dt => {
+                            let arr = dt.split('-');
+                            return arr[1] + '/' + arr[2] + '/' + arr[0];
+                        };
+
+                        response.products.forEach(x => {
+                            x.thumbnail = x.thumbnail.replace(/\s/g, '%20');
+                            x['bodyText'] = _cleanBody(x.body_parts);
+                            x.author = x.author || 'DIYZ';
+                            x.date = _formatDate(x.date);
+
+                            if (!this.blogList.includes(x)) {
+                                this.blogList.push(x);
+                            }
+                        });
+                    } else {
+                        this.set('blogList', []);
+                        this.hasBlog = false;
+                    }
+                })
+                .catch(() => {
+                    this.hasBlog = false;
+                });
+
+            this.isLoading = false;
+        },
         showBlog(title) {
             this.$router.push(`/blog/${title}`);
         }

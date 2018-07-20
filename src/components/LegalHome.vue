@@ -112,7 +112,8 @@ export default {
 .title {
     line-height: 48px;
     font-size: 15px;
-    font-family: 'Poppins-Light', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
 }
 .more-button {
     height: 35px;

@@ -22,7 +22,7 @@ body {
     background: white;
 }
 #app {
-    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -33,7 +33,8 @@ body {
     height: 50px;
     line-height: 50px;
     color: black;
-    font-family: 'Poppins-Light', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
     font-size: 15px;
     border-bottom: 1px solid rgb(231, 231, 231);
     a {
@@ -44,7 +45,7 @@ body {
         margin: 0 10px;
     }
     .router-link-active {
-        font-weight: bold;
+        font-weight: 400;
     }
     img {
         max-height: 40px;
