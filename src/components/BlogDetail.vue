@@ -84,30 +84,31 @@ export default {
             };
         }
     },
-    mounted() {
-        axios
-            .get(
-                `https://api.sbd-diyz-dev.com/content/dynamic/searchBlogs/${
-                    this.id
-                }`
-            )
-            .then(response => {
-                response = response.data;
-                if (response && response.body_parts) {
-                    this.hasParts = true;
-                }
-
-                if (response) {
-                    this.blogSelected = response;
-                }
-
-                this.hasDetail = true;
-            })
-            .catch(() => {
-                this.hasDetail = false;
-            });
-    },
+    mounted() {},
     methods: {
+        getBlogs() {
+            axios
+                .get(
+                    `https://api.sbd-diyz-dev.com/content/dynamic/searchBlogs/${
+                        this.id
+                    }`
+                )
+                .then(response => {
+                    response = response.data;
+                    if (response && response.body_parts) {
+                        this.hasParts = true;
+                    }
+
+                    if (response) {
+                        this.blogSelected = response;
+                    }
+
+                    this.hasDetail = true;
+                })
+                .catch(() => {
+                    this.hasDetail = false;
+                });
+        },
         formatDate(dt) {
             if (dt) {
                 let arr = dt.split('-');

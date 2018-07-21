@@ -16,6 +16,7 @@ import AboutHome from './components/AboutHome.vue';
 import AboutPress from './components/AboutPress.vue';
 import AboutFaq from './components/AboutFaq.vue';
 import ProjectDetail from './components/ProjectDetail.vue';
+import ShopDetail from './components/ShopDetail.vue';
 // import CategoryDetail from './components/CategoryDetail.vue';
 import BlogDetail from './components/BlogDetail.vue';
 
@@ -112,6 +113,11 @@ export default new Router({
             path: '/shop',
             name: 'shop',
             component: ShopView
+        },
+        {
+            path: '/shop/:id',
+            name: 'shopDetail',
+            component: ShopDetail
         }
     ]
 });

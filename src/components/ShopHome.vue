@@ -2,7 +2,7 @@
     <div>
         <div class="shop-wrapper">
             <div v-for="tool in toolsList" :key="tool.index" class="outer-wrapper">
-                <div class="tool-wrapper">
+                <div class="tool-wrapper" v-on:click="showDetail(tool.id)">
                     <img class="tool-image" :src="tool.largeImage" />
                     <div class="right-wrapper">
                         <div class="tool-title">{{tool.title}}</div>
@@ -14,7 +14,7 @@
                             </div>
                             <button id="smallBtn" class="tool-button">Add To Cart</button>
                         </div>
-                        <button id="largeBtn" class="tool-button">Add To Cart</button>
+                        <button id="largeBtn" class="tool-button" @click.prevent.stop="showSnackbar = true">Add To Cart</button>
                     </div>
 
                 </div>
@@ -24,6 +24,10 @@
         <loading :active.sync="isLoading"
                  :can-cancel="true"
                  :is-full-page="true"></loading>
+
+        <md-snackbar :md-position="position" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackbar" md-persistent>
+            <span>Product added to cart.</span>
+        </md-snackbar>
     </div>
 </template>
 
@@ -44,7 +48,11 @@ export default {
             currentBatch: 1,
             maxBatch: null,
             hasTools: false,
-            page: 1
+            page: 1,
+            showSnackbar: false,
+            position: 'left',
+            duration: 4000,
+            isInfinity: false
         };
     },
     mounted() {
@@ -88,6 +96,9 @@ export default {
                     this.hasTools = false;
                     this.isLoading = false;
                 });
+        },
+        showDetail(asin) {
+            this.$router.push(`/shop/${asin}`);
         }
     }
 };
