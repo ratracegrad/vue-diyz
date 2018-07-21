@@ -169,9 +169,9 @@ ul {
 }
 .amazon-button {
     background: #f3d078;
-    background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
-    background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
-    box-shadow: 0 1px 0 rgba(255,255,255,.4) inset;
+    background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
     border-radius: 2px;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
