@@ -26,9 +26,6 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-    --md-theme-default-primary-on-background: #ffd100;
-}
 .md-tabs-navigation {
     margin-bottom: 24px;
 }

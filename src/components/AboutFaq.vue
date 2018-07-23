@@ -95,7 +95,6 @@ export default {
             return `${arr[1]}/${arr[2]}/${arr[0]}`;
         },
         openItem(item) {
-            console.log('openItem', item);
             item.isopen = !item.isopen;
         }
     }

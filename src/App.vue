@@ -51,7 +51,7 @@ body {
         max-height: 40px;
     }
 }
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
     #nav {
         display: none;
     }
@@ -63,11 +63,11 @@ body {
         border-bottom: 1px solid rgb(231, 231, 231);
         padding: 0 15px;
     }
-    img {
+    #drawer img {
         max-height: 40px;
     }
 }
-@media screen and (min-width: 621px) {
+@media screen and (min-width: 801px) {
     #drawer {
         display: none;
     }
