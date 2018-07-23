@@ -49,6 +49,10 @@
             <div class="no-details">Unable to load blog details.<br> Please
                 try again later.</div>
         </div>
+
+        <loading :active.sync="isLoading"
+                 :can-cancel="true"
+                 :is-full-page="true"></loading>
     </div>
 </template>
 
@@ -56,20 +60,24 @@
 import axios from 'axios';
 import 'video.js/dist/video-js.css';
 import { videoPlayer } from 'vue-video-player';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.min.css';
 
 export default {
     name: 'BlogDetail',
     components: {
-        videoPlayer
+        videoPlayer,
+        Loading
     },
     data() {
         return {
             id: this.$route.params.id,
             blogSelected: {},
-            hasDetail: false,
+            hasDetail: true,
             hasParts: false,
             backgroundColor: 'lightgray',
-            height: this.setImageHeight()
+            height: this.setImageHeight(),
+            isLoading: false
         };
     },
     computed: {
@@ -84,9 +92,12 @@ export default {
             };
         }
     },
-    mounted() {},
+    mounted() {
+        this.getBlogs();
+    },
     methods: {
         getBlogs() {
+            this.isLoading = true;
             axios
                 .get(
                     `https://api.sbd-diyz-dev.com/content/dynamic/searchBlogs/${
@@ -108,6 +119,8 @@ export default {
                 .catch(() => {
                     this.hasDetail = false;
                 });
+
+            this.isLoading = false;
         },
         formatDate(dt) {
             if (dt) {

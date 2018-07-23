@@ -25,7 +25,6 @@ export default {
             isLoading: false
         };
     },
-
     beforeMount() {
         this.getTags();
     },

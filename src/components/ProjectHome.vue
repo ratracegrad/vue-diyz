@@ -1,5 +1,13 @@
 <template>
     <div>
+        <!--<v-carousel>-->
+            <!--<v-carousel-item-->
+                    <!--v-for="(item,i) in items"-->
+                    <!--:key="i"-->
+                    <!--:src="item.src"-->
+            <!--&gt;</v-carousel-item>-->
+        <!--</v-carousel>-->
+        <HeaderCarousel></HeaderCarousel>
         <GridComp :content="projects"/>
     </div>
 </template>
@@ -9,12 +17,14 @@ import Loading from 'vue-loading-overlay';
 import GridComp from '@/components/GridComp.vue';
 import 'vue-loading-overlay/dist/vue-loading.min.css';
 import axios from 'axios';
+import HeaderCarousel from './HeaderCarousel.vue';
 
 export default {
     name: 'ProjectHome',
     components: {
         Loading,
-        GridComp
+        GridComp,
+        HeaderCarousel
     },
     data() {
         return {
@@ -22,7 +32,22 @@ export default {
             currentPage: null,
             numPages: null,
             hasProjects: false,
-            isLoading: false
+            isLoading: false,
+            items: [
+                {
+                    src:
+                        'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+                },
+                {
+                    src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+                },
+                {
+                    src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+                },
+                {
+                    src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+                }
+            ]
         };
     },
 
