@@ -2,7 +2,7 @@
     <div>
         <div class="shop-wrapper">
             <div v-for="tool in toolsList" :key="tool.index" class="outer-wrapper">
-                <div class="tool-wrapper" v-on:click="showDetail(tool.id)">
+                <div class="tool-wrapper" v-on:click="showDetail(tool)">
                     <img class="tool-image" :src="tool.largeImage" />
                     <div class="right-wrapper">
                         <div class="tool-title">{{tool.title}}</div>
@@ -97,8 +97,9 @@ export default {
                     this.isLoading = false;
                 });
         },
-        showDetail(asin) {
-            this.$router.push(`/shop/${asin}`);
+        showDetail(tool) {
+            this.$store.commit('setSelectedTool', tool);
+            this.$router.push(`/shop/${tool.id}`);
         }
     }
 };

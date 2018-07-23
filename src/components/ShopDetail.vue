@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div v-show="hasDetail">
+        <div>Store: {{storeTool}}</div>
+        <div>
             <div class="overview-wrapper">
                 <div class="image-wrapper">
                     <img :src="itemSelected.largeImage" class="large-image" />
@@ -33,11 +34,6 @@
             </div>
         </div>
 
-        <div v-show="!hasDetail">
-            <div class="no-details">Unable to load product details.<br> Please
-                try again later.</div>
-        </div>
-
         <md-snackbar :md-position="position" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackbar" md-persistent>
             <span>Product added to cart.</span>
         </md-snackbar>
@@ -45,54 +41,21 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
     name: 'ShopDetail',
     data() {
         return {
             id: this.$route.params.id,
-            itemSelected: {},
-            hasDetail: false,
             showSnackbar: false,
             position: 'left',
             duration: 4000,
             isInfinity: false
         };
     },
-    watch: {
-        '$route.params'() {
-            this.id = this.$route.params.id;
-            this.reset();
-            this.getDetails();
-        }
-    },
-    mounted() {
-        this.getDetails();
-    },
-    methods: {
-        getDetails() {
-            axios
-                .get(
-                    `https://api.diyz.com/content/dynamic/searchProducts/${
-                        this.id
-                    }`
-                )
-                .then(response => {
-                    response = response.data;
-
-                    if (response) {
-                        this.itemSelected = response;
-                        this.hasDetail = true;
-                    }
-                })
-                .catch(() => {
-                    this.hasDetail = false;
-                });
-        },
-        reset() {
-            this.itemSelected = {};
-            this.hasDetail = false;
+    computed: {
+        itemSelected() {
+            return this.$store.state.itemSelected;
         }
     }
 };

@@ -51,4 +51,25 @@ body {
         max-height: 40px;
     }
 }
+@media screen and (max-width: 620px) {
+    #nav {
+        display: none;
+    }
+    #drawer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        border-bottom: 1px solid rgb(231, 231, 231);
+        padding: 0 15px;
+    }
+    img {
+        max-height: 40px;
+    }
+}
+@media screen and (min-width: 621px) {
+    #drawer {
+        display: none;
+    }
+}
 </style>
