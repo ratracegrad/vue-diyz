@@ -1,5 +1,6 @@
 <template>
     <div>
+        <HeaderCarousel></HeaderCarousel>
         <GridComp :content="projects"/>
     </div>
 </template>
@@ -9,12 +10,14 @@ import Loading from 'vue-loading-overlay';
 import GridComp from '@/components/GridComp.vue';
 import 'vue-loading-overlay/dist/vue-loading.min.css';
 import axios from 'axios';
+import HeaderCarousel from './HeaderCarousel.vue';
 
 export default {
     name: 'BrowseHome',
     components: {
         Loading,
-        GridComp
+        GridComp,
+        HeaderCarousel
     },
     data() {
         return {

@@ -1,12 +1,5 @@
 <template>
     <div>
-        <!--<v-carousel>-->
-            <!--<v-carousel-item-->
-                    <!--v-for="(item,i) in items"-->
-                    <!--:key="i"-->
-                    <!--:src="item.src"-->
-            <!--&gt;</v-carousel-item>-->
-        <!--</v-carousel>-->
         <HeaderCarousel></HeaderCarousel>
         <GridComp :content="projects"/>
     </div>
