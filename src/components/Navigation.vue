@@ -25,30 +25,48 @@
                 <md-list-item @click="changeRoutes('/')">
                     <span class="md-list-item-text">Home</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item @click="changeRoutes('/category')">
                     <span class="md-list-item-text">Category</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item @click="changeRoutes('/browse')">
                     <span class="md-list-item-text">Browse</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item @click="changeRoutes('/shop')">
                     <span class="md-list-item-text">Shop</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item @click="changeRoutes('/blog')">
                     <span class="md-list-item-text">Blog</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item @click="changeRoutes('/pro-chat/pros')">
                     <span class="md-list-item-text">Pro Chat</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item @click="changeRoutes('/about')">
                     <span class="md-list-item-text">About Us</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item @click="changeRoutes('/contact')">
                     <span class="md-list-item-text">Contact Us</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
                 <md-list-item @click="changeRoutes('/legal')">
                     <span class="md-list-item-text">Legal</span>
                 </md-list-item>
+                <md-divider></md-divider>
+
             </md-list>
         </md-drawer>
 
@@ -74,7 +92,6 @@ export default {
 
 <style lang="scss" >
 .md-list-item-text {
-    border-bottom: 1px solid #efc100;
     color: #262624;
     font-weight: 400;
     min-height: 55px;
