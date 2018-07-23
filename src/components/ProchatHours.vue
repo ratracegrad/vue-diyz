@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="hoursWrapper">
-            <div v-show="storeHours.isOpen" class="centerText" entry-animation="slide-down-animation">
+            <div v-show="!storeHours.isOpen" class="centerText" entry-animation="slide-down-animation">
                 <div class="hoursTitle">Pro Advisors will be</div>
                 <div class="hoursTitle">available <span class="bold">{{storeHours.openDay}}</span> at</div>
                 <div class="hoursTime">{{storeHours.openHours}}</div>
             </div>
 
-            <div v-show="!storeHours.isOpen" class="centerText">
+            <div v-show="storeHours.isOpen" class="centerText">
                 <div class="hoursTitle">Pro Advisors are available</div>
                 <div class="hoursTime">NOW</div>
             </div>
@@ -17,7 +17,7 @@
 
             <div v-for="(dayOfWeek, index) in storeHours" :key="dayOfWeek.id">
                 <div class="entryWrapper">
-                    <div class="dayName">{{_getFullDayFromId(index)}}</div>
+                    <div class="dayName bold">{{_getFullDayFromId(index)}}</div>
                     <div class="timeWrapper">
                         <div v-for="(day, i) in dayOfWeek" :key="i">
                             <div class="dayTime">{{day}}</div>
@@ -245,7 +245,7 @@ export default {
 <style scoped>
 .disclaimer {
     text-align: center;
-    margin: 25px 0;
+    margin: 25px;
     padding: 0 5%;
     font-size: 12px;
 }
@@ -265,6 +265,7 @@ export default {
     font-weight: normal;
 }
 .hoursTime {
+    padding: 25px 0;
     font-family: 'Roboto-Bold', serif;
     font-size: 44px;
 }
