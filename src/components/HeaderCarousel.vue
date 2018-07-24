@@ -59,7 +59,6 @@ export default {
 }
 input {
     background: white;
-    /*height: 30px;*/
     font-size: 20px;
     padding: 15px 10px;
     min-width: 200px;
