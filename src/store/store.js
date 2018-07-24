@@ -5,11 +5,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        itemSelected: {}
+        itemSelected: {},
+        headerCarouselItems: []
     },
     mutations: {
         setSelectedTool: (state, tool) => {
             state.itemSelected = tool;
+        },
+        setCarouselItems: (state, items) => {
+            state.headerCarouselItems = items;
         }
     },
     actions: {}
