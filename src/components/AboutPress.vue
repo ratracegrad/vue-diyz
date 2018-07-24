@@ -42,12 +42,14 @@
 
 <script>
 import axios from 'axios';
+import setImageHeight from '../mixins/setImageHeight.js';
+import formatDate from '../mixins/formatDate.js';
 
 export default {
     name: 'AboutPress',
+    mixins: [setImageHeight, formatDate],
     data() {
         return {
-            height: this.setImageHeight(),
             pressList: [],
             hasPress: null,
             currentBatch: null,
@@ -60,22 +62,6 @@ export default {
         this.getPress(1);
     },
     methods: {
-        setImageHeight() {
-            if (window.innerWidth <= 620) {
-                return (Math.round(window.innerWidth) * 9) / 16 + 'px';
-            } else if (window.innerWidth >= 1060) {
-                return '450px';
-            } else if (this.querySelector('.header-picture')) {
-                return (
-                    (Math.round(
-                        this.querySelector('.header-picture').offsetWidth
-                    ) *
-                        9) /
-                        16 +
-                    'px'
-                );
-            }
-        },
         getPress(page) {
             if (page === 1) {
                 this.pressList = [];
@@ -101,10 +87,6 @@ export default {
                         this.hasPress = false;
                     }
                 });
-        },
-        formatDate(dt) {
-            let arr = dt.split('-');
-            return `${arr[1]}/${arr[2]}/${arr[0]}`;
         }
     }
 };

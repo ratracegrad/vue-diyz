@@ -35,9 +35,11 @@
 
 <script>
 import axios from 'axios';
+import setImageHeight from '../mixins/setImageHeight.js';
 
 export default {
     name: 'LegalHome',
+    mixins: [setImageHeight],
     data() {
         return {
             privacy: null,
@@ -47,41 +49,29 @@ export default {
             hasLegal: false,
             showTerms: false,
             showPrivacy: false,
-            showProAdvice: false,
-            height: this.setImageHeight()
+            showProAdvice: false
         };
     },
     mounted() {
-        axios
-            .get('https://api.sbd-diyz-dev.com/content/static/privacy-terms')
-            .then(response => {
-                response = response.data;
-                this.privacy = response.privacy;
-                this.pro_legal = response.pro_legal;
-                this.sources = response.sources;
-                this.terms = response.terms;
-                this.hasLegal = true;
-            })
-            .catch(() => {
-                this.haslegal = false;
-            });
+        this.getLegal();
     },
     methods: {
-        setImageHeight() {
-            if (window.innerWidth <= 620) {
-                return (Math.round(window.innerWidth) * 9) / 16 + 'px';
-            } else if (window.innerWidth >= 1060) {
-                return '450px';
-            } else if (this.querySelector('.header-picture')) {
-                return (
-                    (Math.round(
-                        this.querySelector('.header-picture').offsetWidth
-                    ) *
-                        9) /
-                        16 +
-                    'px'
-                );
-            }
+        getLegal() {
+            axios
+                .get(
+                    'https://api.sbd-diyz-dev.com/content/static/privacy-terms'
+                )
+                .then(response => {
+                    response = response.data;
+                    this.privacy = response.privacy;
+                    this.pro_legal = response.pro_legal;
+                    this.sources = response.sources;
+                    this.terms = response.terms;
+                    this.hasLegal = true;
+                })
+                .catch(() => {
+                    this.haslegal = false;
+                });
         }
     }
 };

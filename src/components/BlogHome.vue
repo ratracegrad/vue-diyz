@@ -94,12 +94,12 @@ export default {
                         this.set('blogList', []);
                         this.hasBlog = false;
                     }
+                    this.isLoading = false;
                 })
                 .catch(() => {
                     this.hasBlog = false;
+                    this.isLoading = false;
                 });
-
-            this.isLoading = false;
         },
         showBlog(title) {
             this.$router.push(`/blog/${title}`);

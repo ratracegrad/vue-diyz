@@ -171,6 +171,9 @@ export default {
                 .then(response => {
                     this.project = response.data;
                     this.isLoading = false;
+                })
+                .catch(() => {
+                    this.isLoading = false;
                 });
         },
         getCommunity() {
@@ -181,7 +184,6 @@ export default {
                 .then(response => {
                     response = response.data;
                     if (response && response.posts) {
-                        this.isLoading = false;
                         this.hasCommunity = response.posts.length > 0;
                         this.currentBatch = response.current_batch;
                         this.maxBatch = response.num_of_batches;

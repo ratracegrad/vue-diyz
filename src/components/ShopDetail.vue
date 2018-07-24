@@ -1,6 +1,5 @@
 <template>
     <div>
-        <div>Store: {{storeTool}}</div>
         <div>
             <div class="overview-wrapper">
                 <div class="image-wrapper">

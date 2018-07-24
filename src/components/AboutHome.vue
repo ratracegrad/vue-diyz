@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="../images/contact-header.jpg" class="header-picture"
+        <img src="../images/about-header.jpg" class="header-picture"
              v-bind:style="{ backgroundColor: 'lightgray', height: height, backgroundSize: 'cover' }" />
         <div class="team-wrapper">
             <h1 class="header">So who exactly is DIYZ<sup>®</sup>? Glad you asked! We’re a couple dozen wild-eyed makers that can hammer left, hammer right, and we never rest until the job is done.</h1>
@@ -37,12 +37,13 @@
 
 <script>
 import axios from 'axios';
+import setImageHeight from '../mixins/setImageHeight.js';
 
 export default {
     name: 'AboutHome',
+    mixins: [setImageHeight],
     data() {
         return {
-            height: this.setImageHeight(),
             teamList: [],
             hasTeam: null,
             currentBatch: null,
@@ -55,22 +56,6 @@ export default {
         this.getTeam(1);
     },
     methods: {
-        setImageHeight() {
-            if (window.innerWidth <= 620) {
-                return (Math.round(window.innerWidth) * 9) / 16 + 'px';
-            } else if (window.innerWidth >= 1060) {
-                return '450px';
-            } else if (this.querySelector('.header-picture')) {
-                return (
-                    (Math.round(
-                        this.querySelector('.header-picture').offsetWidth
-                    ) *
-                        9) /
-                        16 +
-                    'px'
-                );
-            }
-        },
         getTeam(page) {
             if (page === 1) {
                 this.teamList = [];

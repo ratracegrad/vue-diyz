@@ -11,6 +11,7 @@ import GridComp from '@/components/GridComp.vue';
 import 'vue-loading-overlay/dist/vue-loading.min.css';
 import axios from 'axios';
 import HeaderCarousel from './HeaderCarousel.vue';
+import formatUrlTitle from '../mixins/formatUrlTitle.js';
 
 export default {
     name: 'CategoryHome',
@@ -19,6 +20,7 @@ export default {
         GridComp,
         HeaderCarousel
     },
+    mixins: [formatUrlTitle],
     data() {
         return {
             tags: [],
@@ -32,11 +34,6 @@ export default {
         this.getTags();
     },
     methods: {
-        formatUrlTitle(title) {
-            title = title.trim();
-            title = title.replace(/[:?!&']/g, '');
-            return title.toLowerCase().replace(/\s/g, '-');
-        },
         getTags() {
             this.isLoading = true;
             axios

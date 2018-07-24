@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div v-show="!hasParts">
-                <img v-bind:src="blogSelected.header_image" class="header-picture" :style="[backgroundColor, height]"/>
+                <img v-bind:src="blogSelected.header_image" class="header-picture" :style="{backgroundColor: 'lightgray', height: height}"/>
                 <div class="detail-wrapper">
                     <div class="blog-date">
                         {{formatDate(blogSelected.date)}}</div>
@@ -62,6 +62,8 @@ import 'video.js/dist/video-js.css';
 import { videoPlayer } from 'vue-video-player';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.min.css';
+import formatDate from '../mixins/formatDate.js';
+import setImageHeight from '../mixins/setImageHeight.js';
 
 export default {
     name: 'BlogDetail',
@@ -69,14 +71,13 @@ export default {
         videoPlayer,
         Loading
     },
+    mixins: [formatDate, setImageHeight],
     data() {
         return {
             id: this.$route.params.id,
             blogSelected: {},
             hasDetail: true,
             hasParts: false,
-            backgroundColor: 'lightgray',
-            height: this.setImageHeight(),
             isLoading: false
         };
     },
@@ -115,18 +116,12 @@ export default {
                     }
 
                     this.hasDetail = true;
+                    this.isLoading = false;
                 })
                 .catch(() => {
                     this.hasDetail = false;
+                    this.isLoading = false;
                 });
-
-            this.isLoading = false;
-        },
-        formatDate(dt) {
-            if (dt) {
-                let arr = dt.split('-');
-                return arr[1] + '/' + arr[2] + '/' + arr[0];
-            }
         },
         getAuthor(author) {
             if (author !== undefined) {
@@ -135,22 +130,6 @@ export default {
         },
         hasVideo: function(item) {
             return !(item === null || item === undefined);
-        },
-        setImageHeight() {
-            if (window.innerWidth <= 620) {
-                return (Math.round(window.innerWidth) * 9) / 16 + 'px';
-            } else if (window.innerWidth >= 1060) {
-                return '450px';
-            } else if (this.querySelector('.header-picture')) {
-                return (
-                    (Math.round(
-                        this.querySelector('.header-picture').offsetWidth
-                    ) *
-                        9) /
-                        16 +
-                    'px'
-                );
-            }
         },
         setVideoOptions(src, poster) {
             if (src) {
@@ -175,13 +154,6 @@ export default {
     width: 100%;
     margin: 0 auto;
     object-fit: cover;
-}
-.detail-picture {
-    width: 100%;
-    max-width: 900px;
-    margin: 10px auto;
-    object-fit: cover;
-    display: inherit;
 }
 .detail-wrapper {
     margin: 0 15px;

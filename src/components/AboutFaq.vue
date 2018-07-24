@@ -27,44 +27,26 @@
 
 <script>
 import axios from 'axios';
+import setImageHeight from '../mixins/setImageHeight.js';
+import formatDate from '../mixins/formatDate.js';
 
 export default {
     name: 'AboutFaq',
+    mixins: [setImageHeight, formatDate],
     data() {
         return {
-            height: this.setImageHeight(),
             faqList: [],
             hasFaq: null,
             currentBatch: null,
             maxBatch: null,
             isLoading: false,
-            page: 1,
-            testData: [
-                { title: 'test 1', description: 'description 1' },
-                { title: 'test 2', description: 'description 2' }
-            ]
+            page: 1
         };
     },
     mounted() {
         this.getFaq(1);
     },
     methods: {
-        setImageHeight() {
-            if (window.innerWidth <= 620) {
-                return (Math.round(window.innerWidth) * 9) / 16 + 'px';
-            } else if (window.innerWidth >= 1060) {
-                return '450px';
-            } else if (this.querySelector('.header-picture')) {
-                return (
-                    (Math.round(
-                        this.querySelector('.header-picture').offsetWidth
-                    ) *
-                        9) /
-                        16 +
-                    'px'
-                );
-            }
-        },
         getFaq(page) {
             if (page === 1) {
                 this.faqList = [];
@@ -89,10 +71,6 @@ export default {
                         this.hasFaq = false;
                     }
                 });
-        },
-        formatDate(dt) {
-            let arr = dt.split('-');
-            return `${arr[1]}/${arr[2]}/${arr[0]}`;
         },
         openItem(item) {
             item.isopen = !item.isopen;

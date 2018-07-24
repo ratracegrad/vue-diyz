@@ -22,31 +22,11 @@
 </template>
 
 <script>
+import setImageHeight from '../mixins/setImageHeight.js';
+
 export default {
     name: 'ContactHome',
-    data() {
-        return {
-            height: this.setImageHeight()
-        };
-    },
-    methods: {
-        setImageHeight() {
-            if (window.innerWidth <= 620) {
-                return (Math.round(window.innerWidth) * 9) / 16 + 'px';
-            } else if (window.innerWidth >= 1060) {
-                return '450px';
-            } else if (this.querySelector('.header-picture')) {
-                return (
-                    (Math.round(
-                        this.querySelector('.header-picture').offsetWidth
-                    ) *
-                        9) /
-                        16 +
-                    'px'
-                );
-            }
-        }
-    }
+    mixins: [setImageHeight]
 };
 </script>
 
