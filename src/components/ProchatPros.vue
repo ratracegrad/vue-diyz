@@ -2,22 +2,30 @@
    <div>
         <div class="heading">about pro advice</div>
         <div class="subheading">When you use Bud to request a call, DIYZ matches you with one of our Pro Advisors for real-time help.</div>
-        <agile v-for="advisor in advisors" :key="advisor.id" :mobile-first="true" :arrows="true" :speed="1000"
-            :timing="'linear'" :fade="true"
-            :autoplay="true" :pause-on-hover="true">
-            <div class="slide"><h3>{{advisor.name}}</h3></div>
-        </agile>
+       <v-carousel :style="{ height: height }"
+                   :hide-controls="true">
+           <v-carousel-item
+                   v-for="(item,i) in advisors"
+                   :key="i"
+                   :lazy="true"
+                   :src="item.image"
+                   :interval="4000">
+           </v-carousel-item>
+       </v-carousel>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
 import Loading from 'vue-loading-overlay';
+import setImageHeight from '../mixins/setImageHeight.js';
+
 export default {
     name: 'ProchatHome',
     components: {
         Loading
     },
+    mixins: [setImageHeight],
     data() {
         return {
             advisors: [],
@@ -67,26 +75,4 @@ export default {
     margin: 0 auto;
     padding-bottom: 15px;
 }
-/* .slide {
-    background: {
-        position: center;
-        size: cover;
-    }
-    height: 500px;
-
-    &:before {
-        background-color: rgba(#000, .2);
-        content: '';
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
-
-    &--1 {
-        color: blue
-    }
-
-} */
 </style>
