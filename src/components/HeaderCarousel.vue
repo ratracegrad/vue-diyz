@@ -63,6 +63,7 @@ input {
     padding: 15px 10px;
     min-width: 200px;
     max-width: 860px;
+    width: 80%;
     margin: 0 auto;
 }
 
