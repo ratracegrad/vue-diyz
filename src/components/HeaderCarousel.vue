@@ -21,8 +21,17 @@ export default {
             height: this.setImageHeight()
         };
     },
-    beforeMount() {
+    created() {
         this.getCarousel();
+    },
+    mounted() {
+        this.$nextTick(function() {
+            window.addEventListener('resize', this.setImageHeight);
+            this.setImageHeight();
+        });
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.getWindowWidth);
     },
     methods: {
         getCarousel() {
@@ -36,16 +45,11 @@ export default {
         },
         setImageHeight() {
             if (window.innerWidth <= 620) {
-                return (Math.round(window.innerWidth) * 9) / 16 + 'px';
+                this.height = (Math.round(window.innerWidth) * 9) / 16 + 'px';
             } else if (window.innerWidth >= 1060) {
-                return '450px';
-            } else if (this.querySelector('.v-carousel')) {
-                return (
-                    (Math.round(this.querySelector('.v-carousel').offsetWidth) *
-                        9) /
-                        16 +
-                    'px'
-                );
+                this.height = '450px';
+            } else {
+                this.height = (window.innerWidth * 9) / 16;
             }
         }
     }
