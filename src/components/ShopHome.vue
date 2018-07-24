@@ -68,7 +68,7 @@ export default {
 
             axios
                 .get(
-                    `https://api.diyz.com/content/dynamic/searchProducts?page=${batch}`
+                    `https://api.sbd-diyz-dev.com/content/dynamic/searchProducts?page=${batch}`
                 )
                 .then(response => {
                     response = response.data;

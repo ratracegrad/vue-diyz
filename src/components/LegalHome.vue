@@ -98,6 +98,7 @@ export default {
     align-items: center;
     border-bottom: 1px solid rgb(231, 231, 231);
     padding: 10px 0;
+    margin-bottom: 15px;
 }
 .title {
     line-height: 48px;

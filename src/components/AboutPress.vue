@@ -35,6 +35,10 @@
             <div v-show="!hasPress" class="no-items">
                 No Press Items Found!
             </div>
+
+            <loading :active.sync="isLoading"
+                     :can-cancel="true"
+                     :is-full-page="true"></loading>
         </div>
 
     </div>
@@ -44,14 +48,19 @@
 import axios from 'axios';
 import setImageHeight from '../mixins/setImageHeight.js';
 import formatDate from '../mixins/formatDate.js';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.min.css';
 
 export default {
     name: 'AboutPress',
+    components: {
+        Loading
+    },
     mixins: [setImageHeight, formatDate],
     data() {
         return {
             pressList: [],
-            hasPress: null,
+            hasPress: true,
             currentBatch: null,
             maxBatch: null,
             isLoading: false,

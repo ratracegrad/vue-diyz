@@ -153,6 +153,7 @@ a {
 .description-wrapper {
     text-align: left;
     padding: 0 10px;
+    margin: 15px 0;
 }
 .more-button {
     height: 35px;

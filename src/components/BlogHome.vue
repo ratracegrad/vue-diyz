@@ -3,9 +3,6 @@
         <h1 class="header" v-show="hasBlog">Get inspired to DIY with
             tips, tricks and other ideas that will help you
             turn your house into a home.</h1>
-        <div v-show="!hasBlog" class="no-blog-posts">
-            No Blog Posts Found!
-        </div>
         <div class="wrapper">
             <div v-for="item in blogList" :key="item.blog_id">
                 <div class="large-item-wrapper">
@@ -20,6 +17,10 @@
                 </div>
             </div>
 
+        </div>
+
+        <div v-show="!hasBlog" class="no-blog-posts">
+            No Blog Posts Found!
         </div>
 
         <loading :active.sync="isLoading"
@@ -44,7 +45,7 @@ export default {
             currentBatch: null,
             maxBatch: null,
             isLoading: false,
-            hasBlog: false
+            hasBlog: true
         };
     },
     mounted() {
