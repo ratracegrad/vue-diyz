@@ -1,6 +1,7 @@
 <template>
     <div>
         <HeaderCarousel></HeaderCarousel>
+        <div class="browseTag" v-show="categoryTag" > <span class="bold">Browse</span> {{categoryTag}}</div>
         <GridComp :content="projects"/>
     </div>
 </template>
@@ -27,7 +28,8 @@ export default {
             currentPage: null,
             numPages: null,
             hasTags: false,
-            isLoading: false
+            isLoading: false,
+            categoryTag: this.$route.params.id
         };
     },
 
@@ -37,9 +39,13 @@ export default {
     methods: {
         getProjects() {
             this.isLoading = true;
+
+            this.categoryTag = this.categoryTag ? this.categoryTag : '';
             axios
                 .get(
-                    'https://api.sbd-diyz-dev.com/content/dynamic/project_pages?page=1'
+                    `https://api.sbd-diyz-dev.com/content/dynamic/project_pages?page=1&tag=${
+                        this.categoryTag
+                    }`
                 )
                 .then(response => {
                     response.data.projects.forEach(project => {
@@ -62,4 +68,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.browseTag {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 28px;
+}
+.bold {
+    font-weight: bold;
+}
 </style>

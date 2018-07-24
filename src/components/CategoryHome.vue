@@ -40,8 +40,7 @@ export default {
                 .get('https://api.sbd-diyz-dev.com/content/static/tag_pages/1')
                 .then(response => {
                     response.data.page.forEach(tag => {
-                        tag.route =
-                            '/category/' + this.formatUrlTitle(tag.title);
+                        tag.route = '/browse/' + this._formatTag(tag.title);
                     });
                     this.tags = response.data.page;
                     this.currentPage = response.data.current_page;
@@ -53,6 +52,18 @@ export default {
                     this.hasTags = false;
                     this.isLoading = false;
                 });
+        },
+        _formatTag(tag) {
+            /**
+             * replace ^ with ' & '
+             */
+            if (/\^/g.test(tag)) {
+                tag = tag.replace(/\^/g, ' & ');
+            }
+            if (/_/g.test(tag)) {
+                tag = tag.replace(/_/g, ' ');
+            }
+            return tag;
         }
     }
 };

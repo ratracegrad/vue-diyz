@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import HomeView from './views/HomeView.vue';
 import CategoryView from './views/CategoryView.vue';
 import BrowseView from './views/BrowseView.vue';
+import BrowseHome from './components/BrowseHome.vue';
 import AboutView from './views/AboutView.vue';
 import BlogView from './views/BlogView.vue';
 import ContactView from './views/ContactView.vue';
@@ -38,7 +39,14 @@ export default new Router({
         {
             path: '/browse',
             name: 'browse',
-            component: BrowseView
+            component: BrowseView,
+            children: [
+                {
+                    path: ':id',
+                    name: 'browseHome',
+                    component: BrowseHome
+                }
+            ]
         },
         {
             path: '/blog',
