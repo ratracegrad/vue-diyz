@@ -59,7 +59,7 @@ export default {
         getHours() {
             this.isLoading = false;
             axios
-                .get(`https://api.diyz.com/core/callrequests/hours`)
+                .get(`https://api.sbd-diyz-dev.com/core/callrequests/hours`)
                 .then(response => {
                     response = response.data;
 
