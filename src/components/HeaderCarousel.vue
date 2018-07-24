@@ -36,7 +36,7 @@ export default {
     methods: {
         getCarousel() {
             axios
-                .get('https://api.diyz.com/content/static/carousel')
+                .get('https://api.sbd-diyz-dev.com/content/static/carousel')
                 .then(response => {
                     response = response.data;
                     this.$store.commit('setCarouselItems', response);
