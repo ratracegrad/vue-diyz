@@ -75,7 +75,7 @@ export default {
     font-weight: bold;
     text-transform: uppercase;
     padding: 30px 10px 10px 10px;
-    line-height: 14px;
+    line-height: 18px;
     background: -moz-linear-gradient(
         bottom,
         rgba(255, 255, 255, 0.9) 30%,
