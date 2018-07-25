@@ -162,7 +162,7 @@ export default {
     width: 100%;
 }
 .blog-date {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 23px;
     color: rgb(92, 92, 92);
     text-align: center;
@@ -176,22 +176,22 @@ export default {
     margin: 0 auto;
 }
 .blog-parts-title {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 23px;
     max-width: 900px;
     margin: 0 auto;
 }
 .blog-author {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 20px;
     color: #939199;
     text-align: center;
 }
 .blog-text {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 16px;
+    line-height: 20px;
     max-width: 900px;
     margin: 0 auto;
 }
@@ -200,7 +200,7 @@ export default {
     margin: 0 auto 20px;
     cursor: pointer;
     color: #0000ee;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 a.blog-text {

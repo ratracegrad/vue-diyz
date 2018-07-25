@@ -105,7 +105,7 @@ body {
     font-weight: normal;
 }
 h2 {
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     line-height: 18px;
@@ -146,7 +146,7 @@ a {
 }
 .title {
     line-height: 48px;
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
 }

@@ -47,7 +47,7 @@
                                     <div class="community-detail">
                                         <div class="community-title">{{item.title}}</div>
                                         <div class="community-author">{{item.userName}}</div>
-                                        <div class="community-date">{{item.postedOn}}</div>
+                                        <div class="community-date">{{formatDate(item.postedOn.slice(0,10))}}</div>
                                         <div class="community-descr">{{item.body}}</div>
                                     </div>
                                     <icon name="chevron-down" class="community-more-button" />
@@ -96,6 +96,7 @@ import 'video.js/dist/video-js.css';
 import { videoPlayer } from 'vue-video-player';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.min.css';
+import formatDate from '../mixins/formatDate';
 
 export default {
     name: 'ProjectDetail',
@@ -103,6 +104,7 @@ export default {
         videoPlayer,
         Loading
     },
+    mixins: [formatDate],
     data() {
         return {
             id: this.$route.params.id,
@@ -285,12 +287,14 @@ export default {
     font-size: 26px;
     text-transform: uppercase;
     -webkit-margin-before: 0;
+    -webkit-margin-before: 0;
     -webkit-margin-after: 0;
+    margin-bottom: 10px;
 }
 .project-descr {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 19px;
-    height: 55px;
+    height: 57px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -302,7 +306,7 @@ export default {
 }
 .see-more {
     color: #0ab8e2;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 28px;
     margin-bottom: 16px;
 }
@@ -361,7 +365,7 @@ export default {
 }
 .community-subheader {
     color: #262624;
-    font-size: 14px;
+    font-size: 16px;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
     margin: 5px 0 18px 0;
@@ -401,7 +405,7 @@ export default {
 .community-author {
     height: 19px;
     color: #262624;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     letter-spacing: -0.05px;
     line-height: 19px;
@@ -410,16 +414,16 @@ export default {
 .community-date {
     height: 15px;
     color: #939199;
-    font-size: 11px;
+    font-size: 16px;
     letter-spacing: -0.03px;
-    line-height: 15px;
+    line-height: 18px;
     overflow: hidden;
 }
 .community-descr {
     height: 36px;
     color: #262624;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 16px;
+    line-height: 20px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -471,7 +475,7 @@ export default {
     font-family: 'Roboto-Bold', sans-serif;
 }
 .related-descr {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 18px;
     display: -webkit-box;
     -webkit-line-clamp: 3;

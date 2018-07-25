@@ -108,10 +108,10 @@ export default {
     padding-bottom: 20px;
 }
 .product-description > span {
-    font-size: 15px;
+    font-size: 16px;
 }
 .product-features {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     color: rgb(95, 95, 95);
 }
@@ -124,7 +124,7 @@ ul {
 .no-details {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
     text-align: center;
     margin: 40px;
 }
@@ -141,7 +141,7 @@ ul {
     cursor: pointer;
     padding: 8px;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     width: 100%;
     max-width: 600px;
     margin-left: auto;
@@ -178,18 +178,18 @@ ul {
         margin: 0;
     }
     .product-title {
-        font-size: 15px;
+        font-size: 16px;
         line-height: 18px;
         height: 36px;
         overflow: hidden;
         font-weight: bold;
     }
     .product-department {
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 16px;
+        line-height: 18px;
     }
     .product-price {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 

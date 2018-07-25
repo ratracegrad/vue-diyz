@@ -1,6 +1,6 @@
 <template>
    <div>
-        
+
         <v-container >
             <v-layout column>
                 <v-flex>
@@ -9,7 +9,7 @@
                 </v-flex>
                 <v-flex>
                     <v-carousel>
-                        <v-carousel-item 
+                        <v-carousel-item
                         v-for="(item,i) in advisors"
                         :key="'car' + i"
                         :src="item.image"
@@ -25,7 +25,7 @@
                 </v-flex>
             </v-layout>
         </v-container>
-        
+
     </div>
 </template>
 
@@ -78,7 +78,7 @@ export default {
 }
 .subheading {
     font-family: 'Roboto', serif;
-    font-size: 15px;
+    font-size: 16px;
     text-align: center;
     margin: 0 auto;
     padding-bottom: 15px;

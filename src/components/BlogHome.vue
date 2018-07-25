@@ -153,11 +153,11 @@ export default {
     padding-left: 18px;
 }
 .blog-date {
-    font-size: 11px;
+    font-size: 16px;
     color: rgb(92, 92, 92);
 }
 .blog-title {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 17px;
     height: 34px;
@@ -171,9 +171,9 @@ export default {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.2em;
-    height: 30px;
+    height: 38px;
     overflow: hidden;
 }
 .large-item-wrapper {

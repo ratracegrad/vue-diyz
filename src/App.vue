@@ -35,7 +35,7 @@ body {
     color: black;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 16px;
     border-bottom: 1px solid rgb(231, 231, 231);
     a {
         display: flex;

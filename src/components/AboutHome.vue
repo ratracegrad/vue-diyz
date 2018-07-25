@@ -127,13 +127,13 @@ body {
     margin: 10px;
     border: 1px solid rgb(227, 227, 227);
     cursor: pointer;
+    background: rgba(247, 247, 247, 0.5);
 }
 .team-entry {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 157px;
-    background: rgba(247, 247, 247, 0.5);
 }
 .left-content,
 .right-content {
@@ -168,7 +168,7 @@ body {
 }
 .team-title {
     color: rgb(66, 66, 66);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 18px;
     padding-right: 15px;
 }

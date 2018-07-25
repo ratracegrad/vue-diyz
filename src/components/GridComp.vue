@@ -70,7 +70,7 @@ export default {
     left: 0;
     right: 0;
     transition: opacity 0.1s;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Roboto';
     font-weight: bold;
     text-transform: uppercase;

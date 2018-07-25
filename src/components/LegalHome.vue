@@ -102,7 +102,7 @@ export default {
 }
 .title {
     line-height: 48px;
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
 }

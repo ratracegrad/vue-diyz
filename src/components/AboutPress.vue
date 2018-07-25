@@ -127,7 +127,7 @@ body {
     font-weight: normal;
 }
 h2 {
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     line-height: 18px;
@@ -152,12 +152,12 @@ h2 {
     height: 100%;
 }
 .press-date {
-    font-size: 12px;
+    font-size: 16px;
     color: #939199;
     line-height: 18px;
 }
 .press-title {
-    font-size: 15px;
+    font-size: 17px;
     line-height: 20px;
     font-weight: bold;
     height: 40px;
@@ -168,7 +168,7 @@ h2 {
     cursor: pointer;
 }
 .press-publisher {
-    font-size: 13px;
+    font-size: 16px;
     padding-top: 10px;
 }
 a {

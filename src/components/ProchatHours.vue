@@ -247,7 +247,7 @@ export default {
     text-align: center;
     margin: 25px;
     padding: 0 5%;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .disclaimer span {
@@ -282,7 +282,7 @@ export default {
 }
 .dayName {
     font-family: 'Roboto-Bold', serif;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 15px;
     flex: 0.33;
 }

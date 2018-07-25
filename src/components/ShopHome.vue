@@ -155,9 +155,9 @@ export default {
     margin: 0 auto;
 }
 .tool-title {
-    font-size: 13px;
-    line-height: 16px;
-    height: 48px;
+    font-size: 16px;
+    line-height: 18px;
+    height: 54px;
     overflow: hidden;
     font-weight: bold;
     margin-top: 15px;
@@ -171,13 +171,13 @@ export default {
     height: 100%;
 }
 .tool-brand {
-    font-size: 14px;
+    font-size: 16px;
     height: 17px;
     line-height: 17px;
     overflow: hidden;
 }
 .tool-price {
-    font-size: 15px;
+    font-size: 16px;
     height: 18px;
     line-height: 18px;
     font-weight: bold;
@@ -202,7 +202,7 @@ export default {
     cursor: pointer;
     padding: 8px;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     width: 100%;
     max-width: 600px;
     margin-top: auto;
@@ -237,7 +237,7 @@ export default {
     .tool-button {
         max-width: 120px;
         margin: auto 0 0 0;
-        font-size: 13px;
+        font-size: 16px;
     }
     .tool-image {
         width: 107px;
