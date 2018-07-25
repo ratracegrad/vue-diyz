@@ -179,7 +179,9 @@ export default {
         getCommunity() {
             axios
                 .get(
-                    `https://api.diyz.com/community/retrieve/${this.id}?page=1`
+                    `https://api.sbd-diyz-dev.com/community/retrieve/${
+                        this.id
+                    }?page=1`
                 )
                 .then(response => {
                     response = response.data;
