@@ -11,6 +11,19 @@ import Navigation from './components/Navigation';
 export default {
     components: {
         'app-navigation': Navigation
+    },
+    metaInfo: {
+        // if no subcomponents specify a metaInfo.title, this title will be used
+        title: 'DIYZ',
+        // all titles will be injected into this template
+        titleTemplate: '%s | Vue DIYZ',
+        meta: [
+            { charset: 'utf-8' },
+            {
+                name: 'description',
+                content: 'demonstration of DIYZ created using Vue'
+            }
+        ]
     }
 };
 </script>

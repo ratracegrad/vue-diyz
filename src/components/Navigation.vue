@@ -4,12 +4,11 @@
             <md-button class="md-icon-button" @click="showNavigation = !showNavigation">
                 <md-icon>menu</md-icon>
             </md-button>
-            <!--<icon name="bars" @click="showDialog = !showDialog"></icon>-->
-            <img src="../images/logo.png" />
+            <img src="../images/logo.png" alt="logo" />
             <div></div>
         </div>
         <div id="nav">
-            <router-link to="/" exact><img src="../images/logo.png" /></router-link>
+            <router-link to="/" exact><img src="../images/logo.png" alt="logo" /></router-link>
             <router-link to="/category" exact>Category</router-link>
             <router-link to="/browse" exact>Browse</router-link>
             <router-link to="/shop" exact>Shop</router-link>

@@ -4,7 +4,7 @@
             <div v-for="square in content" :key="square.id">
                 <router-link :to="square.route" exact>
                     <div class="square-entry photo-content">
-                        <img :src="square.image" />
+                        <img :src="square.image" :alt="square.title"/>
                         <div class="detail">{{square.title}}</div>
                     </div>
                 </router-link>
@@ -71,7 +71,7 @@ export default {
     right: 0;
     transition: opacity 0.1s;
     font-size: 16px;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     padding: 30px 10px 10px 10px;

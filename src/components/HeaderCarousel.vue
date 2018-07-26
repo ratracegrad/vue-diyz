@@ -10,8 +10,8 @@
             ></v-carousel-item>
         </v-carousel>
         <div class="search">
-            <!--<input type="text" placeholder="Search">-->
-            <input type="text" placeholder="Search">
+            <label for="search"></label>
+            <input id="search" type="text" placeholder="Search" aria-label="search" title="Search">
         </div>
     </div>
 </template>
